@@ -8,7 +8,7 @@ public enum BrickColor {White, DarkBlue, Red, LightBlue, Yellow }
 
 public class Brick : MonoBehaviour
 {
-    public static List<Brick> GetBricks;
+    public static List<GameObject> GetBricks = new List<GameObject>();
     public BrickColor CurrentColor;
     public Sprite[] Colors;
 
@@ -17,21 +17,23 @@ public class Brick : MonoBehaviour
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        GetBricks.Add(this);
+        GetBricks.Add(this.gameObject);
     }
 
     public void HitBlock()
     {
         if (spriteRenderer.sprite == Colors[0])
         {
-            Destroy(this, .05f);
+            GetBricks.Remove(this.gameObject);
+            Destroy(this.gameObject, .05f);
         }
         else
         {
             spriteRenderer.sprite = Colors[Array.IndexOf(Colors, spriteRenderer.sprite) - 1]; // need using System;
         }
-        GameManager.GetGameManager.Score();
+        GameManager.GetGameManager.Score(50);
 
     }
+
 
 }

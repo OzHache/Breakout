@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 10355390}
   m_Layer: 0
   m_Name: Floor
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -709,6 +709,7 @@ MonoBehaviour:
   ScoreText: {fileID: 507500304}
   LevelText: {fileID: 15818337}
   Paddle: {fileID: 679258044}
+  ball: {fileID: 564526258}
   Speed: 8
 --- !u!4 &411549618
 Transform:
@@ -939,7 +940,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!212 &564526256
 SpriteRenderer:
@@ -1015,7 +1016,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc1bb904c14919944ace7aab2893c94c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 8
+  speed: 8
+  Paddle: {fileID: 679258042}
+  inPlay: 0
 --- !u!1 &679258042
 GameObject:
   m_ObjectHideFlags: 0
@@ -1749,6 +1752,10 @@ PrefabInstance:
     - target: {fileID: 1132120879557129056, guid: 46800b0594d1d394da90cea58ee1ffe3, type: 3}
       propertyPath: m_Name
       value: Block
+      objectReference: {fileID: 0}
+    - target: {fileID: 1132120879557129056, guid: 46800b0594d1d394da90cea58ee1ffe3, type: 3}
+      propertyPath: m_TagString
+      value: Brick
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46800b0594d1d394da90cea58ee1ffe3, type: 3}

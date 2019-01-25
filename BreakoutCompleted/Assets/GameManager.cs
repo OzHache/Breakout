@@ -9,11 +9,13 @@ public class GameManager : MonoBehaviour
     public Text ScoreText;
     public Text LevelText;
     public Rigidbody2D Paddle;
+    public Ball ball;
 
     public static GameManager GetGameManager;       //Self Reference
 
     private int score = 0;
     private int level = 0;
+    private int life = 3;
     [Range(1f,10f)]
     [SerializeField] float Speed = 7;
 
@@ -29,7 +31,10 @@ public class GameManager : MonoBehaviour
     {
         if (this != GetGameManager)
             Destroy(this);
-      
+        if (!ball.inPlay && Input.GetKeyDown(KeyCode.Space))
+        {
+            ball.Launch();
+        }
     }
     private void FixedUpdate()
     {
@@ -42,9 +47,9 @@ public class GameManager : MonoBehaviour
         LevelText.text = level.ToString();
     }
 
-    public void Score()
+    public void Score(int value)
     {
-        throw new NotImplementedException();
+        score += value;
     }
 
     //TODO: make a level transition for destroying all the blocks
@@ -57,5 +62,11 @@ public class GameManager : MonoBehaviour
         {
             Paddle.velocity = Vector2.zero;
         }        
+    }
+
+    public void Loss()
+    {
+        life--;
+        UpdateUI();
     }
 }
