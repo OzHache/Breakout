@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 1281409595117603712}
   - component: {fileID: 8000075156812042827}
   - component: {fileID: 6374310542942766639}
+  - component: {fileID: 1132120879557129057}
   m_Layer: 0
-  m_Name: Block
-  m_TagString: Untagged
+  m_Name: White_Brick
+  m_TagString: Brick
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -106,3 +107,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.5}
   m_EdgeRadius: 0
+--- !u!114 &1132120879557129057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1132120879557129056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf200b71c2f9d1e4bb986be941cb59a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CurrentColor: 0
+  Colors:
+  - {fileID: 21300000, guid: bf9261d629dc75d45b7d1732246a79f0, type: 3}
+  - {fileID: 21300000, guid: abfae2ec41d4e2d49ac24dff0a6e137a, type: 3}
+  - {fileID: 21300000, guid: f83ac05a1cfd3234a9f39b4c3181d9ae, type: 3}
+  - {fileID: 21300000, guid: b48ee09eeaf7c3240b7d6696e07dddd4, type: 3}
+  - {fileID: 21300000, guid: f843d53ec0b89be4f86573809d76175d, type: 3}

@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 {
     public Text ScoreText;
     public Text LevelText;
+    public Text LivesText;
     public Rigidbody2D Paddle;
     public Ball ball;
 
@@ -45,11 +46,13 @@ public class GameManager : MonoBehaviour
     {
         ScoreText.text = score.ToString();
         LevelText.text = level.ToString();
+        LivesText.text = life.ToString();
     }
 
     public void Score(int value)
     {
         score += value;
+        UpdateUI();
     }
 
     //TODO: make a level transition for destroying all the blocks
