@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
     {
         GetGameManager = this;
         DontDestroyOnLoad(this);
+        UpdateUI();
     }
 
     // Update is called once per frame

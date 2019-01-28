@@ -10,6 +10,7 @@ public class Ball : MonoBehaviour
     public GameObject Paddle;
     public bool inPlay = false;
 
+    private bool colllisionUpdateTwice = false;
     private Rigidbody2D rb;
     private Vector2 collisionObject;
     private float velX = 0;
@@ -25,21 +26,27 @@ public class Ball : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (rb.velocity.sqrMagnitude > speed && inPlay == true)
+        if (rb.velocity.sqrMagnitude != speed && inPlay == true)
         {
             rb.velocity = rb.velocity.normalized * speed;
         }
     }
     private void FixedUpdate()
     {
-        if(rb.velocity.x == 0 || rb.velocity.y == 0)
+        VelocityUpdateMethod();
+        colllisionUpdateTwice = false;
+    }
+
+    private void VelocityUpdateMethod()
+    {
+        if (rb.velocity.x == 0 || rb.velocity.y == 0)
         {
             if (velX == 0 && velY == 0)
             {
                 return;
             }
 
-            if(rb.velocity.x != 0)
+            if (rb.velocity.x != 0)
             {
                 velX = rb.velocity.x;
             }
@@ -81,6 +88,16 @@ public class Ball : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        // todo: average out the collisions on multiple collisions so that the ball never goes flat. 
+
+        if (colllisionUpdateTwice)
+        {
+            Debug.Log("Updated Collisions twice in one frame");
+            return;
+        } else
+        {
+            colllisionUpdateTwice = true;
+        }
         switch (collision.collider.tag)
         {
             case "Brick":
@@ -95,6 +112,7 @@ public class Ball : MonoBehaviour
                 NormalReturn(collision);
                 break;
         }
+        VelocityUpdateMethod();
     }
     
     void NormalReturn(Collision2D collision)
